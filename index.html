@@ -119,15 +119,24 @@ header .headerActions .btn{padding:8px 14px;font-size:14px}
 .priceTag small{display:block;font-size:14px;font-weight:600;opacity:.75;margin-bottom:4px}
 
 /* ===== Entrada de precios ===== */
+.turnBanner{
+  text-align:center;font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+  font-size:20px;font-weight:700;padding:10px 24px 0;
+}
+.turnBanner .who{padding:4px 14px;border-radius:20px;display:inline-block;margin-left:6px}
 .guessGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:8px 24px 24px}
 .guessBox{
   background:#1a140d;border:2px solid var(--border);border-radius:14px;padding:16px;
   font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
   transition:border-color .2s, box-shadow .2s;
 }
+.guessBox.active{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent) inset}
 .guessBox.winner{border-color:var(--ok);box-shadow:0 0 0 2px var(--ok) inset;background:#132018}
 .guessBox .teamLabel{font-size:17px;font-weight:700;color:var(--text);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
 .guessBox .medal{font-size:20px}
+.guessBox .waitingTurn{color:var(--muted);font-style:italic;font-size:15px;padding:10px 0}
+.guessBox .lockedPrice{font-size:24px;font-weight:700;text-align:center;padding:10px 0}
+.guessBox .confirmedTick{color:var(--ok);margin-left:6px}
 .guessBox .inputRow{display:flex;align-items:center;gap:6px}
 .guessBox .stepBtn{
   width:40px;height:40px;flex-shrink:0;border-radius:8px;padding:0;
@@ -144,6 +153,8 @@ header .headerActions .btn{padding:8px 14px;font-size:14px}
 .guessBox input:focus{outline:none;border-color:var(--accent)}
 .guessBox input:disabled{opacity:.6}
 .guessBox .euro{font-size:20px;color:var(--muted)}
+.guessBox .confirmBtn{width:100%;margin-top:10px;padding:12px;font-size:16px}
+.guessBox .turnError{color:var(--danger);font-size:14px;margin-top:8px;min-height:18px}
 .guessBox .points{margin-top:8px;font-size:15px;color:var(--muted)}
 .guessBox.winner .points{color:var(--ok);font-weight:700}
 
@@ -188,6 +199,26 @@ header .headerActions .btn{padding:8px 14px;font-size:14px}
   .winnerName{font-size:30px}
   header .titleBlock h1{font-size:20px}
 }
+
+/* ===== Botón flotante de ayuda ===== */
+.helpBtn{
+  position:fixed;top:16px;right:16px;z-index:500;
+  width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(180deg,var(--accent),var(--accent-dark));
+  border:2px solid #eec96a;color:#20160a;
+  font-size:26px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.5);
+  font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+  transition:transform .15s;
+}
+.helpBtn:hover{transform:scale(1.08)}
+.instructionsModal{max-width:640px;text-align:left}
+.instructionsModal h2{text-align:center;margin-bottom:18px}
+.instructionsModal h3{font-size:17px;color:var(--accent);margin:18px 0 6px;font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
+.instructionsModal p, .instructionsModal li{font-size:15px;line-height:1.5;color:var(--text);font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
+.instructionsModal ul{margin:6px 0;padding-left:22px}
+.instructionsModal .modalActions{justify-content:center}
 </style>
 </head>
 <body>
@@ -248,6 +279,7 @@ header .headerActions .btn{padding:8px 14px;font-size:14px}
     </div>
 
     <div class="card">
+      <div class="turnBanner ui" id="turnBanner"></div>
       <div class="guessGrid ui" id="guessGrid"></div>
       <div class="actionsRow ui">
         <button type="button" class="btn primary big" id="resolveBtn" disabled>Resolver</button>
@@ -279,6 +311,39 @@ header .headerActions .btn{padding:8px 14px;font-size:14px}
     <div class="finalTable" id="finalTable"></div>
     <div class="modalActions">
       <button type="button" class="btn primary big" id="newGameBtn">Nueva partida</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Botón e instrucciones ===== -->
+<button type="button" class="helpBtn" id="helpBtn" title="Cómo se juega" aria-label="Cómo se juega">?</button>
+
+<div class="modalOverlay" id="instructionsModalOverlay">
+  <div class="modal instructionsModal ui">
+    <h2>❓ Cómo se juega</h2>
+
+    <h3>El objeto</h3>
+    <p>Sale un objeto antiguo del pueblo con su nombre y su imagen (nunca el precio), y una voz lo describe en voz alta.</p>
+
+    <h3>Turno de cada equipo</h3>
+    <p>Los equipos dicen su precio <strong>uno detrás de otro</strong>, nunca a la vez. El presentador introduce el precio del equipo al que le toca y pulsa "Confirmar precio". No se puede repetir un precio que ya haya dicho otro equipo en la misma ronda.</p>
+    <p>En la primera ronda empieza el primer equipo de la lista. En las siguientes, empieza el equipo que ganó la ronda anterior. Si nadie acertó, empieza el siguiente equipo a la derecha del que abrió esa ronda.</p>
+
+    <h3>Resolver</h3>
+    <p>Cuando los equipos han dicho su precio, se pulsa "Resolver": se revela el precio real y se destaca en verde el equipo que más se acercó <strong>sin pasarse</strong>. Si todos se pasan, nadie puntúa esa ronda.</p>
+
+    <h3>Puntuación</h3>
+    <ul>
+      <li>🥇 Más cerca sin pasarse: 3 puntos</li>
+      <li>🥈 Segundo más cerca sin pasarse: 2 puntos</li>
+      <li>🥉 Tercero más cerca sin pasarse: 1 punto</li>
+    </ul>
+
+    <h3>Final de la partida</h3>
+    <p>La partida termina al agotarse todos los objetos, o pulsando "Terminar juego" en cualquier momento. Gana el equipo con más puntos acumulados (o hay empate si coinciden).</p>
+
+    <div class="modalActions">
+      <button type="button" class="btn primary" id="closeInstructionsBtn">Entendido</button>
     </div>
   </div>
 </div>
@@ -366,7 +431,10 @@ el('startGameBtn').addEventListener('click', () => {
     currentIndex: 0,
     scores: names.map(() => 0),
     playedIds: [],
+    turnStartIdx: 0,
+    currentTurnIdx: 0,
     roundGuesses: names.map(() => ''),
+    roundConfirmed: names.map(() => false),
     resolved: false,
     gameOver: false,
     roundResult: null
@@ -417,53 +485,106 @@ function escapeHtml(s){
   return (s ?? '').toString().replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 }
 
+function renderTurnBanner(){
+  const banner = el('turnBanner');
+  if(state.resolved){
+    banner.innerHTML = '';
+    return;
+  }
+  const idx = state.currentTurnIdx;
+  const name = config.teams[idx];
+  const color = TEAM_COLORS[idx % TEAM_COLORS.length];
+  banner.innerHTML = `🎯 Turno de: <span class="who" style="background:${color}22;color:${color};border:2px solid ${color}">${escapeHtml(name)}</span>`;
+}
+
 function renderGuessGrid(){
-  const item = currentItem();
   const step = 5;
   const html = config.teams.map((name, i) => {
+    const confirmed = state.roundConfirmed[i];
+    const isActive = !state.resolved && !confirmed && i === state.currentTurnIdx;
     const val = state.roundGuesses[i] || '';
-    const disabled = state.resolved ? 'disabled' : '';
-    return `<div class="guessBox" data-idx="${i}" id="guessBox-${i}">
+    let bodyHtml;
+
+    if(state.resolved || confirmed){
+      bodyHtml = `<div class="lockedPrice">${val} €${(!state.resolved && confirmed) ? ' <span class="confirmedTick">✔</span>' : ''}</div>`;
+    } else if(isActive){
+      bodyHtml = `
+        <div class="inputRow">
+          <button type="button" class="btn stepBtn" data-delta="-${step}">−</button>
+          <input type="number" min="0" step="${step}" inputmode="numeric" placeholder="0" id="activeInput" value="${val}" />
+          <button type="button" class="btn stepBtn" data-delta="${step}">+</button>
+          <span class="euro">€</span>
+        </div>
+        <button type="button" class="btn primary confirmBtn" id="confirmTurnBtn">Confirmar precio ✔</button>
+        <div class="turnError ui" id="turnError"></div>`;
+    } else {
+      bodyHtml = `<div class="waitingTurn">En espera de su turno…</div>`;
+    }
+
+    return `<div class="guessBox ${isActive ? 'active' : ''}" data-idx="${i}" id="guessBox-${i}">
       <div class="teamLabel"><span style="color:${TEAM_COLORS[i % TEAM_COLORS.length]}">${escapeHtml(name)}</span><span class="medal" id="medal-${i}"></span></div>
-      <div class="inputRow">
-        <button type="button" class="btn stepBtn" data-idx="${i}" data-delta="-${step}" ${disabled}>−</button>
-        <input type="number" min="0" step="${step}" inputmode="numeric" placeholder="0"
-          data-idx="${i}" value="${val}" ${disabled} />
-        <button type="button" class="btn stepBtn" data-idx="${i}" data-delta="${step}" ${disabled}>+</button>
-        <span class="euro">€</span>
-      </div>
+      ${bodyHtml}
       <div class="points" id="points-${i}"></div>
     </div>`;
   }).join('');
   el('guessGrid').innerHTML = html;
+  renderTurnBanner();
 
-  el('guessGrid').querySelectorAll('input').forEach(inp => {
-    inp.addEventListener('input', () => {
-      const idx = parseInt(inp.dataset.idx, 10);
-      state.roundGuesses[idx] = inp.value;
+  const activeInput = el('activeInput');
+  if(activeInput){
+    activeInput.addEventListener('input', () => {
+      state.roundGuesses[state.currentTurnIdx] = activeInput.value;
       saveState();
-      updateResolveButton();
     });
-  });
+    activeInput.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter'){ e.preventDefault(); confirmCurrentTurn(); }
+    });
+  }
 
   el('guessGrid').querySelectorAll('.stepBtn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const idx = parseInt(btn.dataset.idx, 10);
       const delta = parseInt(btn.dataset.delta, 10);
-      const current = parseFloat(state.roundGuesses[idx]) || 0;
+      const current = parseFloat(state.roundGuesses[state.currentTurnIdx]) || 0;
       const next = Math.max(0, current + delta);
-      state.roundGuesses[idx] = String(next);
+      state.roundGuesses[state.currentTurnIdx] = String(next);
       saveState();
-      const input = el('guessGrid').querySelector(`input[data-idx="${idx}"]`);
-      if(input) input.value = next;
-      updateResolveButton();
+      if(activeInput) activeInput.value = next;
     });
   });
+
+  const confirmBtn = el('confirmTurnBtn');
+  if(confirmBtn){
+    confirmBtn.addEventListener('click', confirmCurrentTurn);
+  }
+}
+
+function confirmCurrentTurn(){
+  const idx = state.currentTurnIdx;
+  const raw = state.roundGuesses[idx];
+  const val = parseFloat(raw);
+
+  if(raw === '' || raw === null || raw === undefined || isNaN(val) || val < 0){
+    el('turnError').textContent = 'Introduce un precio válido.';
+    return;
+  }
+
+  const dupIdx = config.teams.findIndex((_, j) => state.roundConfirmed[j] && parseFloat(state.roundGuesses[j]) === val);
+  if(dupIdx !== -1){
+    el('turnError').textContent = `${config.teams[dupIdx]} ya ha dicho ${val} € — hay que decir un precio distinto.`;
+    return;
+  }
+
+  state.roundGuesses[idx] = String(val);
+  state.roundConfirmed[idx] = true;
+  state.currentTurnIdx = (idx + 1) % config.teams.length;
+  saveState();
+  renderGuessGrid();
+  updateResolveButton();
 }
 
 function updateResolveButton(){
-  const allFilled = state.roundGuesses.every(v => v !== '' && v !== null && !isNaN(parseFloat(v)) && parseFloat(v) >= 0);
-  el('resolveBtn').disabled = state.resolved || !allFilled;
+  const allConfirmed = state.roundConfirmed.every(Boolean);
+  el('resolveBtn').disabled = state.resolved || !allConfirmed;
 }
 
 function loadCurrentItemUI(){
@@ -524,6 +645,13 @@ el('resolveBtn').addEventListener('click', () => {
   state.resolved = true;
   state.roundResult = { winners, itemPrice: item.price };
   state.playedIds.push(item.id);
+
+  // Quién empieza la siguiente ronda: el que acertó (más cerca sin pasarse);
+  // si todos se pasaron, el siguiente equipo hacia la derecha del que empezó esta ronda.
+  state.turnStartIdx = winners.length > 0
+    ? winners[0].idx
+    : (state.turnStartIdx + 1) % config.teams.length;
+
   saveState();
 
   applyResolvedVisuals(state.roundResult);
@@ -532,7 +660,6 @@ el('resolveBtn').addEventListener('click', () => {
 
   el('resolveBtn').style.display = 'none';
   el('nextBtn').style.display = 'inline-block';
-  el('guessGrid').querySelectorAll('input').forEach(inp => inp.disabled = true);
   updateProgressLabel();
 });
 
@@ -588,7 +715,9 @@ el('nextBtn').addEventListener('click', () => {
   state.currentIndex++;
   state.resolved = false;
   state.roundResult = null;
+  state.currentTurnIdx = state.turnStartIdx;
   state.roundGuesses = config.teams.map(() => '');
+  state.roundConfirmed = config.teams.map(() => false);
   saveState();
   loadCurrentItemUI();
 });
@@ -641,6 +770,17 @@ function showPlayScreen(){
     endGameFlow(false);
   }
 }
+
+// ========= instrucciones =========
+el('helpBtn').addEventListener('click', () => {
+  el('instructionsModalOverlay').classList.add('visible');
+});
+el('closeInstructionsBtn').addEventListener('click', () => {
+  el('instructionsModalOverlay').classList.remove('visible');
+});
+el('instructionsModalOverlay').addEventListener('click', (e) => {
+  if(e.target === el('instructionsModalOverlay')) el('instructionsModalOverlay').classList.remove('visible');
+});
 
 // ========= arranque =========
 async function init(){
