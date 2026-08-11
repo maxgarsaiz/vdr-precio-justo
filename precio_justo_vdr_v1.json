@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "items": [
     {
       "id": "obj01",
@@ -112,6 +112,146 @@
       "description": "Una horca de madera de labranza, de las que se usaban para mover y aventar la paja y la parva durante la trilla.",
       "image": "imagenes/horca.jpg",
       "price": 50
+    },
+    {
+      "id": "obj17",
+      "name": "Yugo de Bueyes",
+      "description": "Un yugo de madera de encina, tallado a mano hacia 1900, que se colocaba sobre el cuello de los bueyes para engancharlos al carro o al arado y que tirasen juntos.",
+      "image": "imagenes/yugo_bueyes.jpg",
+      "price": 300
+    },
+    {
+      "id": "obj18",
+      "name": "Bieldo de Madera",
+      "description": "Un bieldo de madera de una sola pieza, parecido a una horca pero con los dientes más finos, que se usaba para aventar la parva y separar el grano de la paja.",
+      "image": "imagenes/bieldo.jpg",
+      "price": 35
+    },
+    {
+      "id": "obj19",
+      "name": "Celemín de Madera",
+      "description": "Una medida de madera tradicional, el celemín, que se usaba para medir el grano por volumen antes de que se generalizasen las básculas modernas.",
+      "image": "imagenes/celemin.jpg",
+      "price": 30
+    },
+    {
+      "id": "obj20",
+      "name": "Sulfatadora de Cobre",
+      "description": "Una sulfatadora de cobre que se cargaba a la espalda para fumigar y sulfatar las viñas y los cultivos del campo contra las plagas.",
+      "image": "imagenes/sulfatadora.jpg",
+      "price": 70
+    },
+    {
+      "id": "obj21",
+      "name": "Rueca de Hilar",
+      "description": "Una rueca de madera con su rueda y su pedal, que se usaba para hilar la lana o el lino y convertirlo en hebra antes de tejerlo.",
+      "image": "imagenes/rueca.jpg",
+      "price": 175
+    },
+    {
+      "id": "obj22",
+      "name": "Almirez de Bronce",
+      "description": "Un almirez de bronce con su mano, que se usaba en la cocina para machacar ajos, especias y otros ingredientes, y que también servía como reloj sonoro del pueblo al repicarlo.",
+      "image": "imagenes/almirez.jpg",
+      "price": 50
+    },
+    {
+      "id": "obj23",
+      "name": "Plancha de Carbón",
+      "description": "Una plancha de hierro con chimenea, en cuyo interior se metían brasas o carbón encendido para calentarla y así poder planchar la ropa.",
+      "image": "imagenes/plancha.jpg",
+      "price": 60
+    },
+    {
+      "id": "obj24",
+      "name": "Candil de Aceite",
+      "description": "Un candil de hierro forjado del siglo diecinueve, que se llenaba de aceite y se encendía con una mecha para iluminar la casa antes de que llegara la luz eléctrica.",
+      "image": "imagenes/candil.jpg",
+      "price": 45
+    },
+    {
+      "id": "obj25",
+      "name": "Velón de Aceite",
+      "description": "Un velón de bronce del siglo diecinueve, una lámpara de aceite más elaborada que el candil sencillo, que solía tener su sitio fijo en la mesa o la cocina.",
+      "image": "imagenes/velon.jpg",
+      "price": 100
+    },
+    {
+      "id": "obj26",
+      "name": "Romana de Pesar",
+      "description": "Una romana de mano capaz de pesar hasta ciento treinta kilos, con su gancho y su contrapeso corredizo, que se usaba para pesar sacos, animales o cualquier carga grande.",
+      "image": "imagenes/romana.jpg",
+      "price": 150
+    },
+    {
+      "id": "obj27",
+      "name": "Bota de Vino",
+      "description": "Una bota de vino de piel, de las que se llevaban al campo o a la fiesta para echar un trago a chorro sin necesidad de vaso.",
+      "image": "imagenes/bota_vino.jpg",
+      "price": 19
+    },
+    {
+      "id": "obj28",
+      "name": "Arado de Madera",
+      "description": "Un arado de madera antiguo, de los que tiraba una caballería para abrir surcos en la tierra antes de sembrar.",
+      "image": "imagenes/arado.jpg",
+      "price": 50
+    },
+    {
+      "id": "obj29",
+      "name": "Molino de Café de Pared",
+      "description": "Un molino de café de pared de los años veinte, de los que se colgaban en la cocina y molían los granos de café dando vueltas a la manivela.",
+      "image": "imagenes/molino_cafe.jpg",
+      "price": 120
+    },
+    {
+      "id": "obj30",
+      "name": "Gramófono de Manivela",
+      "description": "Un gramófono antiguo de cuerda, que se hacía sonar dándole vueltas a la manivela, y que reunía a la familia y a los vecinos para escuchar música en las tardes de fiesta.",
+      "image": "imagenes/gramofono.jpg",
+      "price": 280
+    },
+    {
+      "id": "obj31",
+      "name": "Brasero de Latón",
+      "description": "Un brasero de latón, de los que se llenaban de picón encendido y se colocaban bajo la mesa camilla para calentar los pies en las tardes de invierno.",
+      "image": "imagenes/brasero.jpg",
+      "price": 29
+    },
+    {
+      "id": "obj32",
+      "name": "Criba de Madera",
+      "description": "Una criba de madera con su malla curvada, que se usaba para cribar el trigo y separarlo del polvo y las impurezas antes de llevarlo al molino.",
+      "image": "imagenes/criba.jpg",
+      "price": 35
+    },
+    {
+      "id": "obj33",
+      "name": "Farolillo de Aceite",
+      "description": "Un farolillo de hojalata que se llenaba de aceite y se llevaba en la mano para alumbrarse por la calle o por el corral durante la noche.",
+      "image": "imagenes/farolillo.jpg",
+      "price": 30
+    },
+    {
+      "id": "obj34",
+      "name": "Orza de Barro",
+      "description": "Una orza de barro cocido, de las que se usaban en la despensa para conservar aceite, embutidos en manteca o alimentos en salazón durante meses.",
+      "image": "imagenes/orza.jpg",
+      "price": 32
+    },
+    {
+      "id": "obj35",
+      "name": "Garrafa Forrada de Mimbre",
+      "description": "Una garrafa de cristal forrada de mimbre, conocida como damajuana, que se usaba para guardar y transportar el vino desde la bodega hasta la casa.",
+      "image": "imagenes/garrafa_mimbre.jpg",
+      "price": 25
+    },
+    {
+      "id": "obj36",
+      "name": "Balanza de Platillos",
+      "description": "Una balanza de latón con dos platillos, de las que se usaban en las tiendas de ultramarinos para pesar el azúcar, las legumbres o cualquier género a granel.",
+      "image": "imagenes/balanza.jpg",
+      "price": 35
     }
   ]
 }

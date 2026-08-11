@@ -614,7 +614,7 @@ function speakItem(item){
     window.speechSynthesis.cancel();
     const utter = new SpeechSynthesisUtterance(`${item.name}. ${item.description}`);
     utter.lang = 'es-ES';
-    utter.rate = 0.95;
+    utter.rate = 0.85;
     window.speechSynthesis.speak(utter);
   }catch(e){}
 }
