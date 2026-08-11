@@ -1,117 +1,331 @@
 {
-  "version": 1,
+  "version": 3,
+  "currency": "pesetas",
+  "era": "1930-1969",
   "items": [
     {
       "id": "obj01",
       "name": "Cántaro de Cuenca",
       "description": "Un cántaro de barro fabricado en Cuenca hacia 1920, de los que se usaban para ir a buscar agua a la fuente o mantenerla fresca en las casas del pueblo.",
       "image": "imagenes/cantaro.jpg",
-      "price": 100
+      "price": 3,
+      "estimated": true,
+      "priceNote": "Cántaro de barro, producción de alfarero local — precio modesto de uso diario."
     },
     {
       "id": "obj02",
       "name": "Zoqueta de Segador",
       "description": "Una zoqueta de madera de los años cuarenta. Se llevaba en la mano contraria a la hoz, con los dedos metidos dentro, para no cortarse mientras se segaba el trigo a mano.",
       "image": "imagenes/zoqueta.jpg",
-      "price": 25
+      "price": 4,
+      "estimated": true,
+      "priceNote": "Zoqueta de madera, pieza sencilla tallada por el propio segador o el carpintero del pueblo."
     },
     {
       "id": "obj03",
       "name": "Cedazo de Harina",
       "description": "Un cedazo antiguo que se usaba para cribar la harina recién molida y separar el salvado, dejándola fina para amasar el pan.",
       "image": "imagenes/cedazo.jpg",
-      "price": 35
+      "price": 6,
+      "estimated": true,
+      "priceNote": "Cedazo con malla, trabajo de artesano cestero o comprado en la tienda del pueblo."
     },
     {
       "id": "obj04",
       "name": "Trillo",
       "description": "Un trillo de madera con pedernales incrustados en la base, que se arrastraba sobre la parva tirado por una caballería para separar el grano de la paja.",
       "image": "imagenes/trillo.jpg",
-      "price": 220
+      "price": 150,
+      "estimated": true,
+      "priceNote": "Trillo con pedernales, gran apero agrícola — varios días de trabajo de carpintero."
     },
     {
       "id": "obj05",
       "name": "Radio Jicky",
       "description": "Una radio de válvulas francesa de mueble de madera, fabricada hacia 1945, de las que reunían a toda la familia alrededor para escuchar las noticias y los seriales.",
       "image": "imagenes/radio.jpg",
-      "price": 600
+      "price": 750,
+      "estimated": true,
+      "priceNote": "Radio de válvulas, bien de lujo. Dato real de referencia: una radio instalada en 1924 costó 300 ptas; en la posguerra la prensa de la época calificaba el precio de los aparatos de \"desorbitado\"."
     },
     {
       "id": "obj06",
       "name": "Teléfono de Sobremesa",
       "description": "Un teléfono de sobremesa de los años treinta, de baquelita, de los primeros que llegaron a instalarse en los hogares y comercios del pueblo.",
       "image": "imagenes/telefono.jpg",
-      "price": 120
+      "price": 100,
+      "estimated": true,
+      "priceNote": "Cuota anual de abonado telefónico particular. Dato real de referencia: 300 ptas/año en 1886, bajando a 30 ptas/año en los años 50 — estimación intermedia para los años 30."
     },
     {
       "id": "obj07",
       "name": "Carro de Bueyes",
       "description": "Un carro de labranza de gran tamaño fabricado en 1933, de los que tiraban los bueyes cargados de mies, leña o cualquier cosa que hiciera falta transportar por el campo.",
       "image": "imagenes/carro.JPG",
-      "price": 695
+      "price": 450,
+      "estimated": true,
+      "priceNote": "Carro de bueyes, una de las mayores inversiones de una familia labradora — semanas de trabajo de carpintero y herrero."
     },
     {
       "id": "obj08",
       "name": "Ábaco de Escuela",
       "description": "Un ábaco de madera de gran tamaño, de los años cincuenta, de los que colgaban en la pizarra de la escuela del pueblo para enseñar a los niños a contar y a hacer cuentas.",
       "image": "imagenes/avaco.jpg",
-      "price": 50
+      "price": 15,
+      "estimated": true,
+      "priceNote": "Ábaco de madera, material escolar sencillo."
     },
     {
       "id": "obj09",
       "name": "Garlopa de Carpintero",
       "description": "Una garlopa gigante de carpintero, en madera de roble, de principios del siglo veinte, que se usaba para alisar y dejar perfectamente lisas las tablas de madera más largas.",
       "image": "imagenes/garlopa.jpg",
-      "price": 240
+      "price": 40,
+      "estimated": true,
+      "priceNote": "Garlopa de carpintero, herramienta de oficio de calidad."
     },
     {
       "id": "obj10",
       "name": "Pala de Horno",
       "description": "Una pala de madera de haya que se usaba para meter y sacar el pan del horno, en las tahonas y hornos comunales de los pueblos de toda la vida.",
       "image": "imagenes/pala_horno.jpg",
-      "price": 180
+      "price": 8,
+      "estimated": true,
+      "priceNote": "Pala de horno de madera, pieza sencilla de carpintero."
     },
     {
       "id": "obj11",
       "name": "Tenazas de Brasero",
       "description": "Unas tenazas de forja de finales del siglo diecinueve, decoradas con dos bellotas, que se usaban para remover y avivar las brasas del brasero en las tardes de invierno.",
       "image": "imagenes/tenazas.JPG",
-      "price": 100
+      "price": 12,
+      "estimated": true,
+      "priceNote": "Tenazas de forja decoradas, trabajo de herrero."
     },
     {
       "id": "obj12",
       "name": "Tomavistas Capta-Movi",
       "description": "Una cámara de cine doméstica de las que se usaban antiguamente para grabar en casa los momentos más importantes de la familia, como bodas, bautizos y comuniones.",
       "image": "imagenes/tomavistas.jpg",
-      "price": 825
+      "price": 900,
+      "estimated": true,
+      "priceNote": "Tomavistas doméstico, cámara de cine — artículo de lujo importado."
     },
     {
       "id": "obj13",
       "name": "La Revoltosa",
       "description": "Una botella de gaseosa La Revoltosa, de las de nota musical, que refrescaba las comidas y meriendas de las familias del pueblo durante generaciones.",
       "image": "imagenes/revoltosa_musical.jpg",
-      "price": 20
+      "price": 1,
+      "estimated": true,
+      "priceNote": "Botella de gaseosa, consumo cotidiano y barato (precio redondeado a la peseta entera para el juego)."
     },
     {
       "id": "obj14",
-      "name": "Máquina de Coser Willcox & Gibbs",
-      "description": "Una máquina de coser americana de 1890, montada sobre su mesa de hierro fundido, de las que se usaban para arreglar y confeccionar la ropa de toda la familia.",
-      "image": "imagenes/maquina_de_coser.jpg",
-      "price": 750
+      "name": "Máquina de Coser Singer 15K",
+      "description": "Una máquina de coser Singer, el modelo 15K, fabricada en 1940, de las que se compraban a plazos y eran el orgullo de la casa para arreglar y confeccionar la ropa de toda la familia.",
+      "image": "imagenes/maquina_singer.jpg",
+      "price": 350,
+      "estimated": true,
+      "priceNote": "Máquina Singer, gran compra familiar — históricamente muy vendida a plazos en España."
     },
     {
       "id": "obj15",
       "name": "Hoz",
       "description": "Una hoz de mano tradicional, la herramienta de toda la vida para segar el trigo y la hierba antes de que llegara la maquinaria agrícola al campo.",
       "image": "imagenes/hoz.JPG",
-      "price": 20
+      "price": 3,
+      "estimated": true,
+      "priceNote": "Hoz de mano, herramienta sencilla de herrero."
     },
     {
       "id": "obj16",
       "name": "Horca de Madera",
       "description": "Una horca de madera de labranza, de las que se usaban para mover y aventar la paja y la parva durante la trilla.",
       "image": "imagenes/horca.jpg",
-      "price": 50
+      "price": 6,
+      "estimated": true,
+      "priceNote": "Horca de madera, pieza sencilla de carpintero."
+    },
+    {
+      "id": "obj17",
+      "name": "Yugo de Bueyes",
+      "description": "Un yugo de madera de encina, tallado a mano hacia 1900, que se colocaba sobre el cuello de los bueyes para engancharlos al carro o al arado y que tirasen juntos.",
+      "image": "imagenes/yugo_bueyes.jpg",
+      "price": 35,
+      "estimated": true,
+      "priceNote": "Yugo de bueyes tallado a mano, trabajo esmerado de carpintero."
+    },
+    {
+      "id": "obj18",
+      "name": "Bieldo de Madera",
+      "description": "Un bieldo de madera de una sola pieza, parecido a una horca pero con los dientes más finos, que se usaba para aventar la parva y separar el grano de la paja.",
+      "image": "imagenes/bieldo.jpg",
+      "price": 5,
+      "estimated": true,
+      "priceNote": "Bieldo de madera, pieza sencilla de carpintero."
+    },
+    {
+      "id": "obj19",
+      "name": "Celemín de Madera",
+      "description": "Una medida de madera tradicional, el celemín, que se usaba para medir el grano por volumen antes de que se generalizasen las básculas modernas.",
+      "image": "imagenes/celemin.jpg",
+      "price": 4,
+      "estimated": true,
+      "priceNote": "Celemín de madera, medida sencilla de carpintero."
+    },
+    {
+      "id": "obj20",
+      "name": "Sulfatadora de Cobre",
+      "description": "Una sulfatadora de cobre que se cargaba a la espalda para fumigar y sulfatar las viñas y los cultivos del campo contra las plagas.",
+      "image": "imagenes/sulfatadora.jpg",
+      "price": 25,
+      "estimated": true,
+      "priceNote": "Sulfatadora de cobre, trabajo de calderero."
+    },
+    {
+      "id": "obj21",
+      "name": "Rueca de Hilar",
+      "description": "Una rueca de madera con su rueda y su pedal, que se usaba para hilar la lana o el lino y convertirlo en hebra antes de tejerlo.",
+      "image": "imagenes/rueca.jpg",
+      "price": 20,
+      "estimated": true,
+      "priceNote": "Rueca de hilar con mecanismo de rueda y pedal."
+    },
+    {
+      "id": "obj22",
+      "name": "Almirez de Bronce",
+      "description": "Un almirez de bronce con su mano, que se usaba en la cocina para machacar ajos, especias y otros ingredientes, y que también servía como reloj sonoro del pueblo al repicarlo.",
+      "image": "imagenes/almirez.jpg",
+      "price": 15,
+      "estimated": true,
+      "priceNote": "Almirez de bronce fundido, trabajo de fundidor."
+    },
+    {
+      "id": "obj23",
+      "name": "Plancha de Carbón",
+      "description": "Una plancha de hierro con chimenea, en cuyo interior se metían brasas o carbón encendido para calentarla y así poder planchar la ropa.",
+      "image": "imagenes/plancha.jpg",
+      "price": 10,
+      "estimated": true,
+      "priceNote": "Plancha de hierro fundido para carbón."
+    },
+    {
+      "id": "obj24",
+      "name": "Candil de Aceite",
+      "description": "Un candil de hierro forjado del siglo diecinueve, que se llenaba de aceite y se encendía con una mecha para iluminar la casa antes de que llegara la luz eléctrica.",
+      "image": "imagenes/candil.jpg",
+      "price": 4,
+      "estimated": true,
+      "priceNote": "Candil de hierro forjado, pieza sencilla de herrero."
+    },
+    {
+      "id": "obj25",
+      "name": "Velón de Aceite",
+      "description": "Un velón de bronce del siglo diecinueve, una lámpara de aceite más elaborada que el candil sencillo, que solía tener su sitio fijo en la mesa o la cocina.",
+      "image": "imagenes/velon.jpg",
+      "price": 18,
+      "estimated": true,
+      "priceNote": "Velón de bronce, más elaborado que el candil sencillo."
+    },
+    {
+      "id": "obj26",
+      "name": "Romana de Pesar",
+      "description": "Una romana de mano capaz de pesar hasta ciento treinta kilos, con su gancho y su contrapeso corredizo, que se usaba para pesar sacos, animales o cualquier carga grande.",
+      "image": "imagenes/romana.jpg",
+      "price": 30,
+      "estimated": true,
+      "priceNote": "Romana de pesar, mecanismo de precisión con contrapeso."
+    },
+    {
+      "id": "obj27",
+      "name": "Bota de Vino",
+      "description": "Una bota de vino de piel, de las que se llevaban al campo o a la fiesta para echar un trago a chorro sin necesidad de vaso.",
+      "image": "imagenes/bota_vino.jpg",
+      "price": 12,
+      "estimated": true,
+      "priceNote": "Bota de vino de piel, trabajo de guarnicionero."
+    },
+    {
+      "id": "obj28",
+      "name": "Arado de Madera",
+      "description": "Un arado de madera antiguo, de los que tiraba una caballería para abrir surcos en la tierra antes de sembrar.",
+      "image": "imagenes/arado.jpg",
+      "price": 45,
+      "estimated": true,
+      "priceNote": "Arado de madera con refuerzos de metal, apero agrícola de cierta complejidad."
+    },
+    {
+      "id": "obj29",
+      "name": "Molino de Café de Pared",
+      "description": "Un molino de café de pared de los años veinte, de los que se colgaban en la cocina y molían los granos de café dando vueltas a la manivela.",
+      "image": "imagenes/molino_cafe.jpg",
+      "price": 15,
+      "estimated": true,
+      "priceNote": "Molino de café de pared, pequeño artículo manufacturado."
+    },
+    {
+      "id": "obj30",
+      "name": "Gramola \"La Voz de su Amo\"",
+      "description": "Una gramola de maleta de la marca La Voz de su Amo, fabricada hacia 1940, que se abría como un pequeño baúl y llenaba la casa de música al darle cuerda con la manivela.",
+      "image": "imagenes/gramofono.jpg",
+      "price": 250,
+      "estimated": true,
+      "priceNote": "Gramola de maleta, artículo de lujo manufacturado para el hogar."
+    },
+    {
+      "id": "obj31",
+      "name": "Brasero de Latón",
+      "description": "Un brasero de latón, de los que se llenaban de picón encendido y se colocaban bajo la mesa camilla para calentar los pies en las tardes de invierno.",
+      "image": "imagenes/brasero.jpg",
+      "price": 20,
+      "estimated": true,
+      "priceNote": "Brasero de latón, trabajo de calderero."
+    },
+    {
+      "id": "obj32",
+      "name": "Criba de Madera",
+      "description": "Una criba de madera con su malla curvada, que se usaba para cribar el trigo y separarlo del polvo y las impurezas antes de llevarlo al molino.",
+      "image": "imagenes/criba.jpg",
+      "price": 8,
+      "estimated": true,
+      "priceNote": "Criba de madera con malla curvada."
+    },
+    {
+      "id": "obj33",
+      "name": "Farolillo de Aceite",
+      "description": "Un farolillo de hojalata que se llenaba de aceite y se llevaba en la mano para alumbrarse por la calle o por el corral durante la noche.",
+      "image": "imagenes/farolillo.jpg",
+      "price": 4,
+      "estimated": true,
+      "priceNote": "Farolillo de hojalata, pieza sencilla de hojalatero."
+    },
+    {
+      "id": "obj34",
+      "name": "Orza de Barro",
+      "description": "Una orza de barro cocido, de las que se usaban en la despensa para conservar aceite, embutidos en manteca o alimentos en salazón durante meses.",
+      "image": "imagenes/orza.jpg",
+      "price": 3,
+      "estimated": true,
+      "priceNote": "Orza de barro cocido, producción de alfarero local."
+    },
+    {
+      "id": "obj35",
+      "name": "Garrafa Forrada de Mimbre",
+      "description": "Una garrafa de cristal forrada de mimbre, conocida como damajuana, que se usaba para guardar y transportar el vino desde la bodega hasta la casa.",
+      "image": "imagenes/garrafa_mimbre.jpg",
+      "price": 8,
+      "estimated": true,
+      "priceNote": "Garrafa de cristal forrada de mimbre, trabajo de cestero."
+    },
+    {
+      "id": "obj36",
+      "name": "Balanza de Platillos",
+      "description": "Una balanza de latón con dos platillos, de las que se usaban en las tiendas de ultramarinos para pesar el azúcar, las legumbres o cualquier género a granel.",
+      "image": "imagenes/balanza.jpg",
+      "price": 20,
+      "estimated": true,
+      "priceNote": "Balanza de latón con platillos, mecanismo de precisión."
     }
   ]
 }
