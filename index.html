@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>El Precio Justo Valdemoro del Rey</title>
+<title>El Precio Justo Valdemoro del Rey — Edición Retro (Pesetas)</title>
 <style>
 :root{
   --bg:#14100c;
@@ -228,6 +228,7 @@ header .headerActions .btn{padding:8px 14px;font-size:14px}
   <div id="setupScreen">
     <div class="card setupCard ui">
       <h1>💰 El Precio Justo</h1>
+      <p class="sub msg" style="font-weight:700;color:var(--accent)">Edición Retro — los años de nuestros abuelos (pesetas)</p>
       <p class="sub msg">Valdemoro del Rey — configura los equipos antes de empezar</p>
 
       <div class="teamCountRow">
@@ -274,7 +275,7 @@ header .headerActions .btn{padding:8px 14px;font-size:14px}
       <div class="itemName" id="itemName">—</div>
       <div class="priceTag ui" id="priceTag">
         <small>Precio justo</small>
-        <span id="priceTagValue">0 €</span>
+        <span id="priceTagValue">0 Ptas.</span>
       </div>
     </div>
 
@@ -294,7 +295,7 @@ header .headerActions .btn{padding:8px 14px;font-size:14px}
 <div class="modalOverlay" id="roundModalOverlay">
   <div class="modal ui">
     <h2 id="roundModalTitle">Resultado de la ronda</h2>
-    <div class="modalPrice">Precio justo: <strong id="roundModalPrice">0 €</strong></div>
+    <div class="modalPrice">Precio justo: <strong id="roundModalPrice">0 Ptas.</strong></div>
     <div class="podium" id="roundPodium"></div>
     <div class="noWinnerMsg" id="roundNoWinner" style="display:none">Todos los equipos se pasaron del precio — nadie puntúa esta ronda.</div>
     <div class="modalActions">
@@ -321,6 +322,7 @@ header .headerActions .btn{padding:8px 14px;font-size:14px}
 <div class="modalOverlay" id="instructionsModalOverlay">
   <div class="modal instructionsModal ui">
     <h2>❓ Cómo se juega</h2>
+    <p style="text-align:center;color:var(--accent);font-weight:700;margin-bottom:10px">Edición Retro: objetos y precios de los años 30 a 60, en pesetas</p>
 
     <h3>El objeto</h3>
     <p>Sale un objeto antiguo del pueblo con su nombre y su imagen (nunca el precio), y una voz lo describe en voz alta.</p>
@@ -466,7 +468,7 @@ function updateProgressLabel(){
   const total = state.order.length;
   const num = state.currentIndex + 1;
   const remaining = total - state.playedIds.length;
-  el('progressLabel').textContent = `Objeto ${Math.min(num,total)} de ${total} · quedan ${remaining}`;
+  el('progressLabel').textContent = `Edición Retro (pesetas) · Objeto ${Math.min(num,total)} de ${total} · quedan ${remaining}`;
 }
 
 function renderScoreboard(){
@@ -497,8 +499,17 @@ function renderTurnBanner(){
   banner.innerHTML = `🎯 Turno de: <span class="who" style="background:${color}22;color:${color};border:2px solid ${color}">${escapeHtml(name)}</span>`;
 }
 
+function stepForItem(item){
+  const p = item.price;
+  if(p <= 20) return 1;
+  if(p <= 100) return 5;
+  if(p <= 400) return 25;
+  return 50;
+}
+
 function renderGuessGrid(){
-  const step = 5;
+  const item = currentItem();
+  const step = stepForItem(item);
   const html = config.teams.map((name, i) => {
     const confirmed = state.roundConfirmed[i];
     const isActive = !state.resolved && !confirmed && i === state.currentTurnIdx;
@@ -506,14 +517,14 @@ function renderGuessGrid(){
     let bodyHtml;
 
     if(state.resolved || confirmed){
-      bodyHtml = `<div class="lockedPrice">${val} €${(!state.resolved && confirmed) ? ' <span class="confirmedTick">✔</span>' : ''}</div>`;
+      bodyHtml = `<div class="lockedPrice">${val} Ptas.${(!state.resolved && confirmed) ? ' <span class="confirmedTick">✔</span>' : ''}</div>`;
     } else if(isActive){
       bodyHtml = `
         <div class="inputRow">
           <button type="button" class="btn stepBtn" data-delta="-${step}">−</button>
           <input type="number" min="0" step="${step}" inputmode="numeric" placeholder="0" id="activeInput" value="${val}" />
           <button type="button" class="btn stepBtn" data-delta="${step}">+</button>
-          <span class="euro">€</span>
+          <span class="euro">Ptas.</span>
         </div>
         <button type="button" class="btn primary confirmBtn" id="confirmTurnBtn">Confirmar precio ✔</button>
         <div class="turnError ui" id="turnError"></div>`;
@@ -570,7 +581,7 @@ function confirmCurrentTurn(){
 
   const dupIdx = config.teams.findIndex((_, j) => state.roundConfirmed[j] && parseFloat(state.roundGuesses[j]) === val);
   if(dupIdx !== -1){
-    el('turnError').textContent = `${config.teams[dupIdx]} ya ha dicho ${val} € — hay que decir un precio distinto.`;
+    el('turnError').textContent = `${config.teams[dupIdx]} ya ha dicho ${val} Ptas. — hay que decir un precio distinto.`;
     return;
   }
 
@@ -665,7 +676,7 @@ el('resolveBtn').addEventListener('click', () => {
 
 function applyResolvedVisuals(roundResult){
   const item = currentItem();
-  el('priceTagValue').textContent = roundResult.itemPrice + ' €';
+  el('priceTagValue').textContent = roundResult.itemPrice + ' Ptas.';
   el('priceTag').classList.add('visible');
 
   roundResult.winners.forEach(w => {
@@ -681,7 +692,7 @@ function applyResolvedVisuals(roundResult){
 
 function showRoundModal(item, roundResult){
   el('roundModalTitle').textContent = item.name;
-  el('roundModalPrice').textContent = roundResult.itemPrice + ' €';
+  el('roundModalPrice').textContent = roundResult.itemPrice + ' Ptas.';
 
   if(roundResult.winners.length === 0){
     el('roundPodium').innerHTML = '';
@@ -693,7 +704,7 @@ function showRoundModal(item, roundResult){
       const medal = ['🥇','🥈','🥉'][rank];
       return `<div class="podiumRow ${medalClass[rank]}">
         <div class="left">${medal} ${escapeHtml(config.teams[w.idx])}</div>
-        <div class="right">${w.val} € <span class="pts">+${w.points}</span></div>
+        <div class="right">${w.val} Ptas. <span class="pts">+${w.points}</span></div>
       </div>`;
     }).join('');
   }
