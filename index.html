@@ -98,11 +98,11 @@ header .headerActions .btn{padding:8px 14px;font-size:14px}
 /* ===== Objeto actual ===== */
 .itemCard{padding:28px;text-align:center}
 .itemImageBox{
-  width:100%;max-width:520px;margin:0 auto 20px;border-radius:14px;overflow:hidden;
+  width:100%;max-width:520px;height:380px;margin:0 auto 20px;border-radius:14px;
   border:3px solid var(--border);background:#0c0a08;
-  aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
 }
-.itemImageBox img{width:100%;height:100%;object-fit:cover;display:block}
+.itemImageBox img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
 .itemName{font-size:38px;color:var(--text);margin-bottom:8px}
 .speakRow{display:flex;justify-content:center;gap:10px;margin:14px 0 6px}
 .priceTag{
@@ -128,12 +128,19 @@ header .headerActions .btn{padding:8px 14px;font-size:14px}
 .guessBox.winner{border-color:var(--ok);box-shadow:0 0 0 2px var(--ok) inset;background:#132018}
 .guessBox .teamLabel{font-size:17px;font-weight:700;color:var(--text);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
 .guessBox .medal{font-size:20px}
-.guessBox .inputRow{display:flex;align-items:center;gap:8px}
+.guessBox .inputRow{display:flex;align-items:center;gap:6px}
+.guessBox .stepBtn{
+  width:40px;height:40px;flex-shrink:0;border-radius:8px;padding:0;
+  font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;
+}
 .guessBox input{
-  flex:1;font-size:24px;padding:10px 12px;border-radius:8px;border:2px solid var(--border);
-  background:#0f0c09;color:var(--text);font-weight:700;
+  flex:1;min-width:0;font-size:22px;padding:10px 8px;border-radius:8px;border:2px solid var(--border);
+  background:#0f0c09;color:var(--text);font-weight:700;text-align:center;
   font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
 }
+.guessBox input[type=number]::-webkit-inner-spin-button,
+.guessBox input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.guessBox input[type=number]{-moz-appearance:textfield}
 .guessBox input:focus{outline:none;border-color:var(--accent)}
 .guessBox input:disabled{opacity:.6}
 .guessBox .euro{font-size:20px;color:var(--muted)}
@@ -412,14 +419,17 @@ function escapeHtml(s){
 
 function renderGuessGrid(){
   const item = currentItem();
+  const step = 5;
   const html = config.teams.map((name, i) => {
     const val = state.roundGuesses[i] || '';
     const disabled = state.resolved ? 'disabled' : '';
     return `<div class="guessBox" data-idx="${i}" id="guessBox-${i}">
       <div class="teamLabel"><span style="color:${TEAM_COLORS[i % TEAM_COLORS.length]}">${escapeHtml(name)}</span><span class="medal" id="medal-${i}"></span></div>
       <div class="inputRow">
-        <input type="number" min="0" step="1" inputmode="numeric" placeholder="0"
+        <button type="button" class="btn stepBtn" data-idx="${i}" data-delta="-${step}" ${disabled}>−</button>
+        <input type="number" min="0" step="${step}" inputmode="numeric" placeholder="0"
           data-idx="${i}" value="${val}" ${disabled} />
+        <button type="button" class="btn stepBtn" data-idx="${i}" data-delta="${step}" ${disabled}>+</button>
         <span class="euro">€</span>
       </div>
       <div class="points" id="points-${i}"></div>
@@ -432,6 +442,20 @@ function renderGuessGrid(){
       const idx = parseInt(inp.dataset.idx, 10);
       state.roundGuesses[idx] = inp.value;
       saveState();
+      updateResolveButton();
+    });
+  });
+
+  el('guessGrid').querySelectorAll('.stepBtn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.dataset.idx, 10);
+      const delta = parseInt(btn.dataset.delta, 10);
+      const current = parseFloat(state.roundGuesses[idx]) || 0;
+      const next = Math.max(0, current + delta);
+      state.roundGuesses[idx] = String(next);
+      saveState();
+      const input = el('guessGrid').querySelector(`input[data-idx="${idx}"]`);
+      if(input) input.value = next;
       updateResolveButton();
     });
   });
