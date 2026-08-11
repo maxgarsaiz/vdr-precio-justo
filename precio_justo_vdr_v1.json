@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "obj01",
+      "name": "Cántaro de Cuenca",
+      "description": "Un cántaro de barro fabricado en Cuenca hacia 1920, de los que se usaban para ir a buscar agua a la fuente o mantenerla fresca en las casas del pueblo.",
+      "image": "imagenes/cantaro.jpg",
+      "price": 100
+    },
+    {
+      "id": "obj02",
+      "name": "Zoqueta de Segador",
+      "description": "Una zoqueta de madera de los años cuarenta. Se llevaba en la mano contraria a la hoz, con los dedos metidos dentro, para no cortarse mientras se segaba el trigo a mano.",
+      "image": "imagenes/zoqueta.jpg",
+      "price": 25
+    },
+    {
+      "id": "obj03",
+      "name": "Cedazo de Harina",
+      "description": "Un cedazo antiguo que se usaba para cribar la harina recién molida y separar el salvado, dejándola fina para amasar el pan.",
+      "image": "imagenes/cedazo.jpg",
+      "price": 35
+    },
+    {
+      "id": "obj04",
+      "name": "Trillo",
+      "description": "Un trillo de madera con pedernales incrustados en la base, que se arrastraba sobre la parva tirado por una caballería para separar el grano de la paja.",
+      "image": "imagenes/trillo.jpg",
+      "price": 220
+    },
+    {
+      "id": "obj05",
+      "name": "Radio Jicky",
+      "description": "Una radio de válvulas francesa de mueble de madera, fabricada hacia 1945, de las que reunían a toda la familia alrededor para escuchar las noticias y los seriales.",
+      "image": "imagenes/radio.jpg",
+      "price": 600
+    },
+    {
+      "id": "obj06",
+      "name": "Teléfono de Sobremesa",
+      "description": "Un teléfono de sobremesa de los años treinta, de baquelita, de los primeros que llegaron a instalarse en los hogares y comercios del pueblo.",
+      "image": "imagenes/telefono.jpg",
+      "price": 120
+    },
+    {
+      "id": "obj07",
+      "name": "Carro de Bueyes",
+      "description": "Un carro de labranza de gran tamaño fabricado en 1933, de los que tiraban los bueyes cargados de mies, leña o cualquier cosa que hiciera falta transportar por el campo.",
+      "image": "imagenes/carro.JPG",
+      "price": 695
+    },
+    {
+      "id": "obj08",
+      "name": "Ábaco de Escuela",
+      "description": "Un ábaco de madera de gran tamaño, de los años cincuenta, de los que colgaban en la pizarra de la escuela del pueblo para enseñar a los niños a contar y a hacer cuentas.",
+      "image": "imagenes/avaco.jpg",
+      "price": 50
+    },
+    {
+      "id": "obj09",
+      "name": "Garlopa de Carpintero",
+      "description": "Una garlopa gigante de carpintero, en madera de roble, de principios del siglo veinte, que se usaba para alisar y dejar perfectamente lisas las tablas de madera más largas.",
+      "image": "imagenes/garlopa.jpg",
+      "price": 240
+    },
+    {
+      "id": "obj10",
+      "name": "Pala de Horno",
+      "description": "Una pala de madera de haya que se usaba para meter y sacar el pan del horno, en las tahonas y hornos comunales de los pueblos de toda la vida.",
+      "image": "imagenes/pala_horno.jpg",
+      "price": 180
+    },
+    {
+      "id": "obj11",
+      "name": "Tenazas de Brasero",
+      "description": "Unas tenazas de forja de finales del siglo diecinueve, decoradas con dos bellotas, que se usaban para remover y avivar las brasas del brasero en las tardes de invierno.",
+      "image": "imagenes/tenazas.JPG",
+      "price": 100
+    },
+    {
+      "id": "obj12",
+      "name": "Tomavistas Capta-Movi",
+      "description": "Una cámara de cine doméstica de las que se usaban antiguamente para grabar en casa los momentos más importantes de la familia, como bodas, bautizos y comuniones.",
+      "image": "imagenes/tomavistas.jpg",
+      "price": 825
+    },
+    {
+      "id": "obj13",
+      "name": "La Revoltosa",
+      "description": "Una botella de gaseosa La Revoltosa, de las de nota musical, que refrescaba las comidas y meriendas de las familias del pueblo durante generaciones.",
+      "image": "imagenes/revoltosa_musical.jpg",
+      "price": 20
+    },
+    {
+      "id": "obj14",
+      "name": "Máquina de Coser Willcox & Gibbs",
+      "description": "Una máquina de coser americana de 1890, montada sobre su mesa de hierro fundido, de las que se usaban para arreglar y confeccionar la ropa de toda la familia.",
+      "image": "imagenes/maquina_de_coser.jpg",
+      "price": 750
+    },
+    {
+      "id": "obj15",
+      "name": "Hoz",
+      "description": "Una hoz de mano tradicional, la herramienta de toda la vida para segar el trigo y la hierba antes de que llegara la maquinaria agrícola al campo.",
+      "image": "imagenes/hoz.JPG",
+      "price": 20
+    },
+    {
+      "id": "obj16",
+      "name": "Horca de Madera",
+      "description": "Una horca de madera de labranza, de las que se usaban para mover y aventar la paja y la parva durante la trilla.",
+      "image": "imagenes/horca.jpg",
+      "price": 50
+    }
+  ]
+}

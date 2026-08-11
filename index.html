@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>El Precio Justo Valdemoro del Rey</title>
+<style>
+:root{
+  --bg:#14100c;
+  --bg2:#1b1510;
+  --card:#241c14;
+  --card2:#2c2118;
+  --border:#4a3a26;
+  --muted:#b8a98c;
+  --text:#f5ecd9;
+  --accent:#c9922b;
+  --accent-dark:#8b6a1e;
+  --copper:#a15c34;
+  --ok:#4caf50;
+  --ok-dark:#2e7d32;
+  --danger:#c1495b;
+  --danger-dark:#8a2f3d;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:radial-gradient(ellipse at top, #221a12 0%, #0e0b08 70%);
+  color:var(--text);
+  font-family:Georgia,'Times New Roman',serif;
+  min-height:100vh;
+}
+.ui{font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
+.wrap{max-width:1200px;margin:0 auto;padding:20px}
+.card{
+  background:linear-gradient(180deg,var(--card),var(--card2));
+  border:2px solid var(--border);
+  border-radius:16px;
+  box-shadow:0 12px 40px rgba(0,0,0,.5);
+}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;margin:0}
+.btn{
+  appearance:none;border:2px solid var(--accent-dark);
+  background:linear-gradient(180deg,#3a2c1a,#2a2013);
+  color:var(--text);
+  padding:14px 22px;border-radius:10px;cursor:pointer;
+  font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+  font-weight:700;font-size:18px;
+  transition:transform .1s, box-shadow .1s;
+}
+.btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 6px 16px rgba(201,146,43,.25)}
+.btn:active:not(:disabled){transform:translateY(0)}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.btn.primary{background:linear-gradient(180deg,var(--accent),var(--accent-dark));border-color:#eec96a;color:#20160a}
+.btn.danger{background:linear-gradient(180deg,var(--danger),var(--danger-dark));border-color:#e08a97;color:#fff}
+.btn.big{padding:20px 36px;font-size:24px;border-radius:14px}
+.msg{color:var(--muted);font-size:15px;font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
+
+/* ===== Pantalla de configuración ===== */
+#setupScreen{padding:40px 20px}
+.setupCard{max-width:640px;margin:0 auto;padding:36px}
+.setupCard h1{font-size:34px;text-align:center;color:var(--accent);letter-spacing:.5px}
+.setupCard .sub{text-align:center;margin-top:8px}
+.teamCountRow{display:flex;align-items:center;justify-content:center;gap:14px;margin:28px 0}
+.teamCountRow button{width:46px;height:46px;border-radius:50%;font-size:22px;padding:0;display:flex;align-items:center;justify-content:center}
+.teamCountRow .count{font-size:32px;font-weight:700;color:var(--accent);min-width:40px;text-align:center;font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
+.teamNames{display:grid;gap:12px;margin:20px 0}
+.teamNameRow{display:flex;align-items:center;gap:12px}
+.teamNameRow .swatch{width:14px;height:36px;border-radius:4px;flex-shrink:0}
+.teamNameRow input{
+  flex:1;font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+  font-size:18px;padding:10px 14px;border-radius:8px;border:2px solid var(--border);
+  background:#171310;color:var(--text);
+}
+.teamNameRow input:focus{outline:none;border-color:var(--accent)}
+.setupActions{display:flex;justify-content:center;margin-top:28px}
+.resumeBanner{max-width:640px;margin:20px auto 0;padding:20px;text-align:center}
+.resumeBanner .btn{margin:6px}
+
+/* ===== Cabecera de partida ===== */
+header.card{padding:16px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:16px}
+header .titleBlock h1{font-size:24px;color:var(--accent)}
+header .titleBlock .progress{font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;color:var(--muted);font-size:15px;margin-top:2px}
+header .headerActions{display:flex;gap:10px;align-items:center}
+header .headerActions .btn{padding:8px 14px;font-size:14px}
+
+/* ===== Marcador ===== */
+.scoreboard{display:flex;gap:12px;flex-wrap:wrap;padding:14px 24px;margin-bottom:16px}
+.scoreCard{
+  flex:1;min-width:140px;padding:12px 16px;border-radius:12px;
+  background:#1a140d;border:2px solid var(--border);
+  font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+  text-align:center;
+}
+.scoreCard.leading{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+.scoreCard .name{font-size:15px;color:var(--muted);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.scoreCard .pts{font-size:30px;font-weight:800;color:var(--accent)}
+
+/* ===== Objeto actual ===== */
+.itemCard{padding:28px;text-align:center}
+.itemImageBox{
+  width:100%;max-width:520px;margin:0 auto 20px;border-radius:14px;overflow:hidden;
+  border:3px solid var(--border);background:#0c0a08;
+  aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;
+}
+.itemImageBox img{width:100%;height:100%;object-fit:cover;display:block}
+.itemName{font-size:38px;color:var(--text);margin-bottom:8px}
+.speakRow{display:flex;justify-content:center;gap:10px;margin:14px 0 6px}
+.priceTag{
+  display:none;
+  margin:18px auto 0;max-width:340px;
+  background:linear-gradient(135deg,#efd48a,#c9922b);
+  color:#241a08;border-radius:10px;padding:16px 20px;
+  font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+  font-weight:800;font-size:30px;
+  box-shadow:0 8px 24px rgba(0,0,0,.4);
+  transform:rotate(-2deg);
+}
+.priceTag.visible{display:block}
+.priceTag small{display:block;font-size:14px;font-weight:600;opacity:.75;margin-bottom:4px}
+
+/* ===== Entrada de precios ===== */
+.guessGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:8px 24px 24px}
+.guessBox{
+  background:#1a140d;border:2px solid var(--border);border-radius:14px;padding:16px;
+  font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+  transition:border-color .2s, box-shadow .2s;
+}
+.guessBox.winner{border-color:var(--ok);box-shadow:0 0 0 2px var(--ok) inset;background:#132018}
+.guessBox .teamLabel{font-size:17px;font-weight:700;color:var(--text);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
+.guessBox .medal{font-size:20px}
+.guessBox .inputRow{display:flex;align-items:center;gap:8px}
+.guessBox input{
+  flex:1;font-size:24px;padding:10px 12px;border-radius:8px;border:2px solid var(--border);
+  background:#0f0c09;color:var(--text);font-weight:700;
+  font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+}
+.guessBox input:focus{outline:none;border-color:var(--accent)}
+.guessBox input:disabled{opacity:.6}
+.guessBox .euro{font-size:20px;color:var(--muted)}
+.guessBox .points{margin-top:8px;font-size:15px;color:var(--muted)}
+.guessBox.winner .points{color:var(--ok);font-weight:700}
+
+.actionsRow{display:flex;justify-content:center;gap:16px;padding:8px 24px 32px;flex-wrap:wrap}
+
+/* ===== Popups ===== */
+.modalOverlay{
+  position:fixed;inset:0;background:rgba(5,3,1,.7);display:none;
+  align-items:center;justify-content:center;z-index:9999;padding:20px;
+}
+.modalOverlay.visible{display:flex}
+.modal{
+  background:linear-gradient(180deg,var(--card),var(--card2));
+  border:2px solid var(--accent-dark);border-radius:18px;
+  width:min(560px,94vw);box-shadow:0 20px 60px rgba(0,0,0,.6);
+  padding:32px;text-align:center;
+}
+.modal h2{font-size:30px;color:var(--accent);margin-bottom:6px}
+.modal .modalPrice{font-size:24px;margin:10px 0 22px;font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
+.podium{display:flex;flex-direction:column;gap:10px;margin:18px 0;font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
+.podiumRow{
+  display:flex;align-items:center;justify-content:space-between;
+  background:#1a140d;border:2px solid var(--border);border-radius:10px;padding:12px 16px;
+}
+.podiumRow.gold{border-color:#e6c14a}
+.podiumRow.silver{border-color:#c7c7c7}
+.podiumRow.bronze{border-color:#c68a4e}
+.podiumRow .left{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700}
+.podiumRow .right{font-size:16px;color:var(--muted)}
+.podiumRow .pts{color:var(--accent);font-weight:800;margin-left:10px}
+.noWinnerMsg{margin:18px 0;font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;color:var(--muted);font-size:16px}
+.modal .modalActions{margin-top:24px;display:flex;justify-content:center;gap:12px}
+
+.winnerModal h2{font-size:26px}
+.winnerName{font-size:40px;color:var(--accent);margin:16px 0;font-weight:800;font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
+.finalTable{display:flex;flex-direction:column;gap:8px;margin:20px 0;font-family:-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
+.finalRow{display:flex;justify-content:space-between;padding:10px 16px;background:#1a140d;border-radius:8px;border:2px solid var(--border)}
+.finalRow.win{border-color:var(--accent)}
+
+@media (max-width:640px){
+  .itemName{font-size:28px}
+  .winnerName{font-size:30px}
+  header .titleBlock h1{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ================= PANTALLA DE CONFIGURACIÓN ================= -->
+  <div id="setupScreen">
+    <div class="card setupCard ui">
+      <h1>💰 El Precio Justo</h1>
+      <p class="sub msg">Valdemoro del Rey — configura los equipos antes de empezar</p>
+
+      <div class="teamCountRow">
+        <button type="button" class="btn" id="teamCountMinus">−</button>
+        <div class="count" id="teamCountDisplay">4</div>
+        <button type="button" class="btn" id="teamCountPlus">+</button>
+      </div>
+      <p class="msg" style="text-align:center">equipos (entre 2 y 8)</p>
+
+      <div class="teamNames" id="teamNamesContainer"></div>
+
+      <div class="setupActions">
+        <button type="button" class="btn primary big" id="startGameBtn">Comenzar Partida</button>
+      </div>
+      <p class="msg" style="text-align:center;margin-top:14px">Una vez empiece la partida no podrás cambiar el número ni el nombre de los equipos.</p>
+    </div>
+
+    <div class="card resumeBanner ui ui-resume" id="resumeBanner" style="display:none">
+      <p class="msg">Hay una partida en curso sin terminar.</p>
+      <button type="button" class="btn primary" id="resumeBtn">Continuar partida</button>
+      <button type="button" class="btn danger" id="discardBtn">Descartar y empezar nueva</button>
+    </div>
+  </div>
+
+  <!-- ================= PANTALLA DE JUEGO ================= -->
+  <div id="playScreen" style="display:none">
+    <header class="card ui">
+      <div class="titleBlock">
+        <h1>💰 El Precio Justo Valdemoro del Rey</h1>
+        <div class="progress" id="progressLabel">Objeto 1 de 16 · quedan 15</div>
+      </div>
+      <div class="headerActions">
+        <button type="button" class="btn" id="repeatSpeechBtn">🔊 Repetir descripción</button>
+        <button type="button" class="btn danger" id="endGameBtn">Terminar juego</button>
+      </div>
+    </header>
+
+    <div class="card scoreboard ui" id="scoreboard"></div>
+
+    <div class="card itemCard">
+      <div class="itemImageBox">
+        <img id="itemImage" src="" alt="">
+      </div>
+      <div class="itemName" id="itemName">—</div>
+      <div class="priceTag ui" id="priceTag">
+        <small>Precio justo</small>
+        <span id="priceTagValue">0 €</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="guessGrid ui" id="guessGrid"></div>
+      <div class="actionsRow ui">
+        <button type="button" class="btn primary big" id="resolveBtn" disabled>Resolver</button>
+        <button type="button" class="btn big" id="nextBtn" style="display:none">Siguiente objeto →</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== Modal resultado de ronda ===== -->
+<div class="modalOverlay" id="roundModalOverlay">
+  <div class="modal ui">
+    <h2 id="roundModalTitle">Resultado de la ronda</h2>
+    <div class="modalPrice">Precio justo: <strong id="roundModalPrice">0 €</strong></div>
+    <div class="podium" id="roundPodium"></div>
+    <div class="noWinnerMsg" id="roundNoWinner" style="display:none">Todos los equipos se pasaron del precio — nadie puntúa esta ronda.</div>
+    <div class="modalActions">
+      <button type="button" class="btn primary" id="closeRoundModalBtn">Continuar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Modal ganador final ===== -->
+<div class="modalOverlay" id="winnerModalOverlay">
+  <div class="modal winnerModal ui">
+    <h2>🏆 ¡Partida terminada!</h2>
+    <div class="winnerName" id="winnerName">—</div>
+    <div class="finalTable" id="finalTable"></div>
+    <div class="modalActions">
+      <button type="button" class="btn primary big" id="newGameBtn">Nueva partida</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ========= constantes =========
+const CATALOG_URL = './precio_justo_vdr_v1.json';
+const LS_CONFIG_KEY = 'pjConfig_vdr_v1';
+const LS_STATE_KEY = 'pjState_vdr_v1';
+const MIN_TEAMS = 2, MAX_TEAMS = 8;
+const TEAM_COLORS = ['#c9922b','#4caf9e','#c1495b','#7a9ecf','#a15c34','#8a6fc9','#c9c34a','#5aa66b'];
+
+const el = id => document.getElementById(id);
+
+let catalog = [];
+let config = null;   // {teams:[names...], locked:true}
+let state = null;    // {order, currentIndex, scores:[...], playedIds:[...], roundGuesses:[...], resolved, gameOver, roundResult}
+
+// ========= carga de catálogo =========
+async function loadCatalog(){
+  const res = await fetch(CATALOG_URL, {cache:'no-store'});
+  if(!res.ok) throw new Error('No se pudo cargar el catálogo: HTTP ' + res.status);
+  const json = await res.json();
+  return json.items || [];
+}
+
+// ========= localStorage =========
+function saveConfig(){ try{ localStorage.setItem(LS_CONFIG_KEY, JSON.stringify(config)); }catch(e){} }
+function loadConfig(){ try{ const raw = localStorage.getItem(LS_CONFIG_KEY); return raw ? JSON.parse(raw) : null; }catch(e){ return null; } }
+function saveState(){ try{ localStorage.setItem(LS_STATE_KEY, JSON.stringify(state)); }catch(e){} }
+function loadState(){ try{ const raw = localStorage.getItem(LS_STATE_KEY); return raw ? JSON.parse(raw) : null; }catch(e){ return null; } }
+function clearAll(){
+  try{ localStorage.removeItem(LS_CONFIG_KEY); localStorage.removeItem(LS_STATE_KEY); }catch(e){}
+}
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+// ========= pantalla de configuración =========
+let teamCount = 4;
+const teamCountDisplay = el('teamCountDisplay');
+const teamNamesContainer = el('teamNamesContainer');
+
+function renderTeamNameInputs(){
+  const existing = [...teamNamesContainer.querySelectorAll('input')].map(i => i.value);
+  teamNamesContainer.innerHTML = '';
+  for(let i=0;i<teamCount;i++){
+    const row = document.createElement('div');
+    row.className = 'teamNameRow';
+    const swatch = document.createElement('div');
+    swatch.className = 'swatch';
+    swatch.style.background = TEAM_COLORS[i % TEAM_COLORS.length];
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = `Nombre del equipo ${i+1}`;
+    input.value = existing[i] || '';
+    input.maxLength = 30;
+    row.appendChild(swatch);
+    row.appendChild(input);
+    teamNamesContainer.appendChild(row);
+  }
+}
+
+el('teamCountMinus').addEventListener('click', () => {
+  if(teamCount > MIN_TEAMS){ teamCount--; teamCountDisplay.textContent = teamCount; renderTeamNameInputs(); }
+});
+el('teamCountPlus').addEventListener('click', () => {
+  if(teamCount < MAX_TEAMS){ teamCount++; teamCountDisplay.textContent = teamCount; renderTeamNameInputs(); }
+});
+
+el('startGameBtn').addEventListener('click', () => {
+  const inputs = [...teamNamesContainer.querySelectorAll('input')];
+  const names = inputs.map((inp,i) => inp.value.trim() || `Equipo ${i+1}`);
+  config = { teams: names, locked: true };
+  saveConfig();
+
+  state = {
+    order: shuffle(catalog.map(it => it.id)),
+    currentIndex: 0,
+    scores: names.map(() => 0),
+    playedIds: [],
+    roundGuesses: names.map(() => ''),
+    resolved: false,
+    gameOver: false,
+    roundResult: null
+  };
+  saveState();
+
+  showPlayScreen();
+});
+
+// ========= reanudar partida existente =========
+el('resumeBtn').addEventListener('click', () => {
+  showPlayScreen();
+});
+el('discardBtn').addEventListener('click', () => {
+  if(!confirm('Se perderá la partida en curso y sus puntuaciones. ¿Continuar?')) return;
+  clearAll();
+  config = null; state = null;
+  el('resumeBanner').style.display = 'none';
+  el('setupScreen').style.display = 'block';
+});
+
+// ========= pantalla de juego =========
+function currentItem(){
+  const id = state.order[state.currentIndex];
+  return catalog.find(it => it.id === id);
+}
+
+function updateProgressLabel(){
+  const total = state.order.length;
+  const num = state.currentIndex + 1;
+  const remaining = total - state.playedIds.length;
+  el('progressLabel').textContent = `Objeto ${Math.min(num,total)} de ${total} · quedan ${remaining}`;
+}
+
+function renderScoreboard(){
+  const maxScore = Math.max(...state.scores, 0);
+  const html = config.teams.map((name, i) => {
+    const leading = state.scores[i] === maxScore && maxScore > 0;
+    return `<div class="scoreCard ${leading ? 'leading' : ''}">
+      <div class="name" style="color:${TEAM_COLORS[i % TEAM_COLORS.length]}">${escapeHtml(name)}</div>
+      <div class="pts">${state.scores[i]}</div>
+    </div>`;
+  }).join('');
+  el('scoreboard').innerHTML = html;
+}
+
+function escapeHtml(s){
+  return (s ?? '').toString().replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+
+function renderGuessGrid(){
+  const item = currentItem();
+  const html = config.teams.map((name, i) => {
+    const val = state.roundGuesses[i] || '';
+    const disabled = state.resolved ? 'disabled' : '';
+    return `<div class="guessBox" data-idx="${i}" id="guessBox-${i}">
+      <div class="teamLabel"><span style="color:${TEAM_COLORS[i % TEAM_COLORS.length]}">${escapeHtml(name)}</span><span class="medal" id="medal-${i}"></span></div>
+      <div class="inputRow">
+        <input type="number" min="0" step="1" inputmode="numeric" placeholder="0"
+          data-idx="${i}" value="${val}" ${disabled} />
+        <span class="euro">€</span>
+      </div>
+      <div class="points" id="points-${i}"></div>
+    </div>`;
+  }).join('');
+  el('guessGrid').innerHTML = html;
+
+  el('guessGrid').querySelectorAll('input').forEach(inp => {
+    inp.addEventListener('input', () => {
+      const idx = parseInt(inp.dataset.idx, 10);
+      state.roundGuesses[idx] = inp.value;
+      saveState();
+      updateResolveButton();
+    });
+  });
+}
+
+function updateResolveButton(){
+  const allFilled = state.roundGuesses.every(v => v !== '' && v !== null && !isNaN(parseFloat(v)) && parseFloat(v) >= 0);
+  el('resolveBtn').disabled = state.resolved || !allFilled;
+}
+
+function loadCurrentItemUI(){
+  const item = currentItem();
+  el('itemImage').src = item.image;
+  el('itemImage').alt = item.name;
+  el('itemName').textContent = item.name;
+  el('priceTag').classList.remove('visible');
+  el('priceTagValue').textContent = '';
+  updateProgressLabel();
+  renderGuessGrid();
+  updateResolveButton();
+  el('resolveBtn').style.display = state.resolved ? 'none' : 'inline-block';
+  el('nextBtn').style.display = state.resolved ? 'inline-block' : 'none';
+
+  if(state.resolved && state.roundResult){
+    applyResolvedVisuals(state.roundResult);
+  }
+
+  // Voz en off — se intenta automáticamente; si el navegador la bloquea, el botón "Repetir descripción" sirve de respaldo.
+  speakItem(item);
+}
+
+function speakItem(item){
+  try{
+    if(!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(`${item.name}. ${item.description}`);
+    utter.lang = 'es-ES';
+    utter.rate = 0.95;
+    window.speechSynthesis.speak(utter);
+  }catch(e){}
+}
+
+el('repeatSpeechBtn').addEventListener('click', () => {
+  const item = currentItem();
+  speakItem(item);
+});
+
+// ========= resolución de ronda =========
+el('resolveBtn').addEventListener('click', () => {
+  const item = currentItem();
+  const guesses = state.roundGuesses.map(v => parseFloat(v));
+
+  const valid = guesses
+    .map((val, idx) => ({idx, val}))
+    .filter(g => g.val <= item.price)
+    .sort((a,b) => b.val - a.val);
+
+  const points = [3,2,1];
+  const winners = valid.slice(0,3).map((g, rank) => ({...g, points: points[rank]}));
+
+  state.scores = state.scores.map((s, i) => {
+    const w = winners.find(w => w.idx === i);
+    return w ? s + w.points : s;
+  });
+
+  state.resolved = true;
+  state.roundResult = { winners, itemPrice: item.price };
+  state.playedIds.push(item.id);
+  saveState();
+
+  applyResolvedVisuals(state.roundResult);
+  renderScoreboard();
+  showRoundModal(item, state.roundResult);
+
+  el('resolveBtn').style.display = 'none';
+  el('nextBtn').style.display = 'inline-block';
+  el('guessGrid').querySelectorAll('input').forEach(inp => inp.disabled = true);
+  updateProgressLabel();
+});
+
+function applyResolvedVisuals(roundResult){
+  const item = currentItem();
+  el('priceTagValue').textContent = roundResult.itemPrice + ' €';
+  el('priceTag').classList.add('visible');
+
+  roundResult.winners.forEach(w => {
+    const box = el('guessBox-' + w.idx);
+    if(box){
+      box.classList.toggle('winner', w.points === 3);
+      const medal = ['🥇','🥈','🥉'][w.points === 3 ? 0 : w.points === 2 ? 1 : 2];
+      el('medal-' + w.idx).textContent = medal;
+      el('points-' + w.idx).textContent = `+${w.points} punto${w.points>1?'s':''}`;
+    }
+  });
+}
+
+function showRoundModal(item, roundResult){
+  el('roundModalTitle').textContent = item.name;
+  el('roundModalPrice').textContent = roundResult.itemPrice + ' €';
+
+  if(roundResult.winners.length === 0){
+    el('roundPodium').innerHTML = '';
+    el('roundNoWinner').style.display = 'block';
+  } else {
+    el('roundNoWinner').style.display = 'none';
+    const medalClass = ['gold','silver','bronze'];
+    el('roundPodium').innerHTML = roundResult.winners.map((w, rank) => {
+      const medal = ['🥇','🥈','🥉'][rank];
+      return `<div class="podiumRow ${medalClass[rank]}">
+        <div class="left">${medal} ${escapeHtml(config.teams[w.idx])}</div>
+        <div class="right">${w.val} € <span class="pts">+${w.points}</span></div>
+      </div>`;
+    }).join('');
+  }
+  el('roundModalOverlay').classList.add('visible');
+}
+el('closeRoundModalBtn').addEventListener('click', () => {
+  el('roundModalOverlay').classList.remove('visible');
+  if(state.playedIds.length >= state.order.length){
+    endGameFlow(false);
+  }
+});
+
+// ========= siguiente objeto =========
+el('nextBtn').addEventListener('click', () => {
+  if(state.currentIndex + 1 >= state.order.length){
+    endGameFlow(false);
+    return;
+  }
+  state.currentIndex++;
+  state.resolved = false;
+  state.roundResult = null;
+  state.roundGuesses = config.teams.map(() => '');
+  saveState();
+  loadCurrentItemUI();
+});
+
+// ========= terminar juego =========
+el('endGameBtn').addEventListener('click', () => {
+  if(!confirm('¿Seguro que quieres terminar la partida ahora? Se mostrará el equipo ganador con la puntuación actual.')) return;
+  endGameFlow(true);
+});
+
+function endGameFlow(forced){
+  state.gameOver = true;
+  saveState();
+
+  const maxScore = Math.max(...state.scores);
+  const winners = config.teams.filter((n,i) => state.scores[i] === maxScore);
+  el('winnerName').textContent = winners.length > 1
+    ? 'Empate entre: ' + winners.join(', ')
+    : winners[0];
+
+  const order = config.teams.map((n,i) => ({name:n, score:state.scores[i]}))
+    .sort((a,b) => b.score - a.score);
+  el('finalTable').innerHTML = order.map(t => {
+    const isWin = t.score === maxScore;
+    return `<div class="finalRow ${isWin?'win':''}"><span>${escapeHtml(t.name)}</span><span>${t.score} pts</span></div>`;
+  }).join('');
+
+  el('winnerModalOverlay').classList.add('visible');
+}
+
+el('newGameBtn').addEventListener('click', () => {
+  clearAll();
+  config = null; state = null;
+  el('winnerModalOverlay').classList.remove('visible');
+  el('playScreen').style.display = 'none';
+  teamCount = 4;
+  teamCountDisplay.textContent = teamCount;
+  renderTeamNameInputs();
+  el('resumeBanner').style.display = 'none';
+  el('setupScreen').style.display = 'block';
+});
+
+// ========= mostrar pantalla de juego =========
+function showPlayScreen(){
+  el('setupScreen').style.display = 'none';
+  el('playScreen').style.display = 'block';
+  renderScoreboard();
+  loadCurrentItemUI();
+  if(state.gameOver){
+    endGameFlow(false);
+  }
+}
+
+// ========= arranque =========
+async function init(){
+  try{
+    catalog = await loadCatalog();
+  }catch(e){
+    document.body.innerHTML = `<div class="wrap"><div class="card" style="padding:30px"><h2 style="color:#c1495b">No se pudo cargar el catálogo</h2><p class="msg ui">${escapeHtml(e.message)}</p></div></div>`;
+    return;
+  }
+
+  renderTeamNameInputs();
+
+  config = loadConfig();
+  state = loadState();
+
+  if(config && config.locked && state && state.order && state.order.length === catalog.length){
+    el('resumeBanner').style.display = 'block';
+  } else {
+    config = null;
+    state = null;
+  }
+}
+
+init();
+</script>
+</body>
+</html>
