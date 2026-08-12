@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "currency": "pesetas",
   "era": "1930-1969",
   "items": [
@@ -8,27 +8,27 @@
       "name": "Cántaro de Cuenca",
       "description": "Un cántaro de barro fabricado en Cuenca hacia 1920, de los que se usaban para ir a buscar agua a la fuente o mantenerla fresca en las casas del pueblo.",
       "image": "imagenes/cantaro.jpg",
-      "price": 3,
+      "price": 17,
       "estimated": true,
-      "priceNote": "Cántaro de barro, producción de alfarero local — precio modesto de uso diario."
+      "priceNote": "Cántaro de barro, producción de alfarero local — precio modesto de uso diario. Precio ajustado al alza respecto a la estimación histórica original, para mantener la jugabilidad con hasta 8 equipos (evitar que el margen de precios sin pasarse sea demasiado estrecho)."
     },
     {
       "id": "obj02",
       "name": "Zoqueta de Segador",
       "description": "Una zoqueta de madera de los años cuarenta. Se llevaba en la mano contraria a la hoz, con los dedos metidos dentro, para no cortarse mientras se segaba el trigo a mano.",
       "image": "imagenes/zoqueta.jpg",
-      "price": 4,
+      "price": 9,
       "estimated": true,
-      "priceNote": "Zoqueta de madera, pieza sencilla tallada por el propio segador o el carpintero del pueblo."
+      "priceNote": "Zoqueta de madera, pieza sencilla tallada por el propio segador o el carpintero del pueblo. Precio ajustado al alza respecto a la estimación histórica original, para mantener la jugabilidad con hasta 8 equipos (evitar que el margen de precios sin pasarse sea demasiado estrecho)."
     },
     {
       "id": "obj03",
       "name": "Cedazo de Harina",
       "description": "Un cedazo antiguo que se usaba para cribar la harina recién molida y separar el salvado, dejándola fina para amasar el pan.",
       "image": "imagenes/cedazo.jpg",
-      "price": 6,
+      "price": 26,
       "estimated": true,
-      "priceNote": "Cedazo con malla, trabajo de artesano cestero o comprado en la tienda del pueblo."
+      "priceNote": "Cedazo con malla, trabajo de artesano cestero o comprado en la tienda del pueblo. Precio ajustado al alza respecto a la estimación histórica original, para mantener la jugabilidad con hasta 8 equipos (evitar que el margen de precios sin pasarse sea demasiado estrecho)."
     },
     {
       "id": "obj04",
@@ -71,9 +71,9 @@
       "name": "Ábaco de Escuela",
       "description": "Un ábaco de madera de gran tamaño, de los años cincuenta, de los que colgaban en la pizarra de la escuela del pueblo para enseñar a los niños a contar y a hacer cuentas.",
       "image": "imagenes/avaco.jpg",
-      "price": 15,
+      "price": 14,
       "estimated": true,
-      "priceNote": "Ábaco de madera, material escolar sencillo."
+      "priceNote": "Ábaco de madera, material escolar sencillo. Precio desplazado ligeramente para evitar coincidir exactamente con otro objeto del catálogo."
     },
     {
       "id": "obj09",
@@ -89,18 +89,18 @@
       "name": "Pala de Horno",
       "description": "Una pala de madera de haya que se usaba para meter y sacar el pan del horno, en las tahonas y hornos comunales de los pueblos de toda la vida.",
       "image": "imagenes/pala_horno.jpg",
-      "price": 8,
+      "price": 29,
       "estimated": true,
-      "priceNote": "Pala de horno de madera, pieza sencilla de carpintero."
+      "priceNote": "Pala de horno de madera, pieza sencilla de carpintero. Precio ajustado al alza respecto a la estimación histórica original, para mantener la jugabilidad con hasta 8 equipos (evitar que el margen de precios sin pasarse sea demasiado estrecho)."
     },
     {
       "id": "obj11",
       "name": "Tenazas de Brasero",
       "description": "Unas tenazas de forja de finales del siglo diecinueve, decoradas con dos bellotas, que se usaban para remover y avivar las brasas del brasero en las tardes de invierno.",
       "image": "imagenes/tenazas.JPG",
-      "price": 12,
+      "price": 36,
       "estimated": true,
-      "priceNote": "Tenazas de forja decoradas, trabajo de herrero."
+      "priceNote": "Tenazas de forja decoradas, trabajo de herrero. Precio ajustado al alza respecto a la estimación histórica original, para mantener la jugabilidad con hasta 8 equipos (evitar que el margen de precios sin pasarse sea demasiado estrecho)."
     },
     {
       "id": "obj12",
@@ -116,9 +116,9 @@
       "name": "La Revoltosa",
       "description": "Una botella de gaseosa La Revoltosa, de las de nota musical, que refrescaba las comidas y meriendas de las familias del pueblo durante generaciones.",
       "image": "imagenes/revoltosa_musical.jpg",
-      "price": 1,
+      "price": 6,
       "estimated": true,
-      "priceNote": "Botella de gaseosa, consumo cotidiano y barato (precio redondeado a la peseta entera para el juego)."
+      "priceNote": "Botella de gaseosa, consumo cotidiano y barato (precio redondeado a la peseta entera para el juego). Precio ajustado al alza respecto a la estimación histórica original, para mantener la jugabilidad con hasta 8 equipos (evitar que el margen de precios sin pasarse sea demasiado estrecho)."
     },
     {
       "id": "obj14",
@@ -134,18 +134,18 @@
       "name": "Hoz",
       "description": "Una hoz de mano tradicional, la herramienta de toda la vida para segar el trigo y la hierba antes de que llegara la maquinaria agrícola al campo.",
       "image": "imagenes/hoz.JPG",
-      "price": 3,
+      "price": 18,
       "estimated": true,
-      "priceNote": "Hoz de mano, herramienta sencilla de herrero."
+      "priceNote": "Hoz de mano, herramienta sencilla de herrero. Precio ajustado al alza respecto a la estimación histórica original, para mantener la jugabilidad con hasta 8 equipos (evitar que el margen de precios sin pasarse sea demasiado estrecho)."
     },
     {
       "id": "obj16",
       "name": "Horca de Madera",
       "description": "Una horca de madera de labranza, de las que se usaban para mover y aventar la paja y la parva durante la trilla.",
       "image": "imagenes/horca.jpg",
-      "price": 6,
+      "price": 27,
       "estimated": true,
-      "priceNote": "Horca de madera, pieza sencilla de carpintero."
+      "priceNote": "Horca de madera, pieza sencilla de carpintero. Precio ajustado al alza respecto a la estimación histórica original, para mantener la jugabilidad con hasta 8 equipos (evitar que el margen de precios sin pasarse sea demasiado estrecho)."
     },
     {
       "id": "obj17",
@@ -161,18 +161,18 @@
       "name": "Bieldo de Madera",
       "description": "Un bieldo de madera de una sola pieza, parecido a una horca pero con los dientes más finos, que se usaba para aventar la parva y separar el grano de la paja.",
       "image": "imagenes/bieldo.jpg",
-      "price": 5,
+      "price": 11,
       "estimated": true,
-      "priceNote": "Bieldo de madera, pieza sencilla de carpintero."
+      "priceNote": "Bieldo de madera, pieza sencilla de carpintero. Precio ajustado al alza respecto a la estimación histórica original, para mantener la jugabilidad con hasta 8 equipos (evitar que el margen de precios sin pasarse sea demasiado estrecho)."
     },
     {
       "id": "obj19",
       "name": "Celemín de Madera",
       "description": "Una medida de madera tradicional, el celemín, que se usaba para medir el grano por volumen antes de que se generalizasen las básculas modernas.",
       "image": "imagenes/celemin.jpg",
-      "price": 4,
+      "price": 10,
       "estimated": true,
-      "priceNote": "Celemín de madera, medida sencilla de carpintero."
+      "priceNote": "Celemín de madera, medida sencilla de carpintero. Precio ajustado al alza respecto a la estimación histórica original, para mantener la jugabilidad con hasta 8 equipos (evitar que el margen de precios sin pasarse sea demasiado estrecho)."
     },
     {
       "id": "obj20",
@@ -188,9 +188,9 @@
       "name": "Rueca de Hilar",
       "description": "Una rueca de madera con su rueda y su pedal, que se usaba para hilar la lana o el lino y convertirlo en hebra antes de tejerlo.",
       "image": "imagenes/rueca.jpg",
-      "price": 20,
+      "price": 22,
       "estimated": true,
-      "priceNote": "Rueca de hilar con mecanismo de rueda y pedal."
+      "priceNote": "Rueca de hilar con mecanismo de rueda y pedal. Precio desplazado ligeramente para evitar coincidir exactamente con otro objeto del catálogo."
     },
     {
       "id": "obj22",
@@ -206,27 +206,27 @@
       "name": "Plancha de Carbón",
       "description": "Una plancha de hierro con chimenea, en cuyo interior se metían brasas o carbón encendido para calentarla y así poder planchar la ropa.",
       "image": "imagenes/plancha.jpg",
-      "price": 10,
+      "price": 34,
       "estimated": true,
-      "priceNote": "Plancha de hierro fundido para carbón."
+      "priceNote": "Plancha de hierro fundido para carbón. Precio ajustado al alza respecto a la estimación histórica original, para mantener la jugabilidad con hasta 8 equipos (evitar que el margen de precios sin pasarse sea demasiado estrecho)."
     },
     {
       "id": "obj24",
       "name": "Candil de Aceite",
       "description": "Un candil de hierro forjado del siglo diecinueve, que se llenaba de aceite y se encendía con una mecha para iluminar la casa antes de que llegara la luz eléctrica.",
       "image": "imagenes/candil.jpg",
-      "price": 4,
+      "price": 7,
       "estimated": true,
-      "priceNote": "Candil de hierro forjado, pieza sencilla de herrero."
+      "priceNote": "Candil de hierro forjado, pieza sencilla de herrero. Precio ajustado al alza respecto a la estimación histórica original, para mantener la jugabilidad con hasta 8 equipos (evitar que el margen de precios sin pasarse sea demasiado estrecho)."
     },
     {
       "id": "obj25",
       "name": "Velón de Aceite",
       "description": "Un velón de bronce del siglo diecinueve, una lámpara de aceite más elaborada que el candil sencillo, que solía tener su sitio fijo en la mesa o la cocina.",
       "image": "imagenes/velon.jpg",
-      "price": 18,
+      "price": 21,
       "estimated": true,
-      "priceNote": "Velón de bronce, más elaborado que el candil sencillo."
+      "priceNote": "Velón de bronce, más elaborado que el candil sencillo. Precio desplazado ligeramente para evitar coincidir exactamente con otro objeto del catálogo."
     },
     {
       "id": "obj26",
@@ -242,9 +242,9 @@
       "name": "Bota de Vino",
       "description": "Una bota de vino de piel, de las que se llevaban al campo o a la fiesta para echar un trago a chorro sin necesidad de vaso.",
       "image": "imagenes/bota_vino.jpg",
-      "price": 12,
+      "price": 38,
       "estimated": true,
-      "priceNote": "Bota de vino de piel, trabajo de guarnicionero."
+      "priceNote": "Bota de vino de piel, trabajo de guarnicionero. Precio ajustado al alza respecto a la estimación histórica original, para mantener la jugabilidad con hasta 8 equipos (evitar que el margen de precios sin pasarse sea demasiado estrecho)."
     },
     {
       "id": "obj28",
@@ -260,9 +260,9 @@
       "name": "Molino de Café de Pared",
       "description": "Un molino de café de pared de los años veinte, de los que se colgaban en la cocina y molían los granos de café dando vueltas a la manivela.",
       "image": "imagenes/molino_cafe.jpg",
-      "price": 15,
+      "price": 16,
       "estimated": true,
-      "priceNote": "Molino de café de pared, pequeño artículo manufacturado."
+      "priceNote": "Molino de café de pared, pequeño artículo manufacturado. Precio desplazado ligeramente para evitar coincidir exactamente con otro objeto del catálogo."
     },
     {
       "id": "obj30",
@@ -278,54 +278,54 @@
       "name": "Brasero de Latón",
       "description": "Un brasero de latón, de los que se llenaban de picón encendido y se colocaban bajo la mesa camilla para calentar los pies en las tardes de invierno.",
       "image": "imagenes/brasero.jpg",
-      "price": 20,
+      "price": 23,
       "estimated": true,
-      "priceNote": "Brasero de latón, trabajo de calderero."
+      "priceNote": "Brasero de latón, trabajo de calderero. Precio desplazado ligeramente para evitar coincidir exactamente con otro objeto del catálogo."
     },
     {
       "id": "obj32",
       "name": "Criba de Madera",
       "description": "Una criba de madera con su malla curvada, que se usaba para cribar el trigo y separarlo del polvo y las impurezas antes de llevarlo al molino.",
       "image": "imagenes/criba.jpg",
-      "price": 8,
+      "price": 31,
       "estimated": true,
-      "priceNote": "Criba de madera con malla curvada."
+      "priceNote": "Criba de madera con malla curvada. Precio ajustado al alza respecto a la estimación histórica original, para mantener la jugabilidad con hasta 8 equipos (evitar que el margen de precios sin pasarse sea demasiado estrecho)."
     },
     {
       "id": "obj33",
       "name": "Farolillo de Aceite",
       "description": "Un farolillo de hojalata que se llenaba de aceite y se llevaba en la mano para alumbrarse por la calle o por el corral durante la noche.",
       "image": "imagenes/farolillo.jpg",
-      "price": 4,
+      "price": 8,
       "estimated": true,
-      "priceNote": "Farolillo de hojalata, pieza sencilla de hojalatero."
+      "priceNote": "Farolillo de hojalata, pieza sencilla de hojalatero. Precio ajustado al alza respecto a la estimación histórica original, para mantener la jugabilidad con hasta 8 equipos (evitar que el margen de precios sin pasarse sea demasiado estrecho)."
     },
     {
       "id": "obj34",
       "name": "Orza de Barro",
       "description": "Una orza de barro cocido, de las que se usaban en la despensa para conservar aceite, embutidos en manteca o alimentos en salazón durante meses.",
       "image": "imagenes/orza.jpg",
-      "price": 3,
+      "price": 19,
       "estimated": true,
-      "priceNote": "Orza de barro cocido, producción de alfarero local."
+      "priceNote": "Orza de barro cocido, producción de alfarero local. Precio ajustado al alza respecto a la estimación histórica original, para mantener la jugabilidad con hasta 8 equipos (evitar que el margen de precios sin pasarse sea demasiado estrecho)."
     },
     {
       "id": "obj35",
       "name": "Garrafa Forrada de Mimbre",
       "description": "Una garrafa de cristal forrada de mimbre, conocida como damajuana, que se usaba para guardar y transportar el vino desde la bodega hasta la casa.",
       "image": "imagenes/garrafa_mimbre.jpg",
-      "price": 8,
+      "price": 32,
       "estimated": true,
-      "priceNote": "Garrafa de cristal forrada de mimbre, trabajo de cestero."
+      "priceNote": "Garrafa de cristal forrada de mimbre, trabajo de cestero. Precio ajustado al alza respecto a la estimación histórica original, para mantener la jugabilidad con hasta 8 equipos (evitar que el margen de precios sin pasarse sea demasiado estrecho)."
     },
     {
       "id": "obj36",
       "name": "Balanza de Platillos",
       "description": "Una balanza de latón con dos platillos, de las que se usaban en las tiendas de ultramarinos para pesar el azúcar, las legumbres o cualquier género a granel.",
       "image": "imagenes/balanza.jpg",
-      "price": 20,
+      "price": 24,
       "estimated": true,
-      "priceNote": "Balanza de latón con platillos, mecanismo de precisión."
+      "priceNote": "Balanza de latón con platillos, mecanismo de precisión. Precio desplazado ligeramente para evitar coincidir exactamente con otro objeto del catálogo."
     }
   ]
 }
